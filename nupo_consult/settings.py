@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-gz%o%)we(%pami!^1@)ml9)b$1-91bldaj#_6d1$_$yaow#4or
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://nupo-consult.onrender.com']
+ALLOWED_HOSTS = ['nupo-consult.onrender.com']
 
 
 MEDIA_URL = '/media/'
