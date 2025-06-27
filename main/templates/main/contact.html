@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - NUPO Consult Ltd</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1e40af;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1e40af;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .header-cta {
+            background: #1e40af;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .header-cta:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #374151;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Contact Hero Section */
+        .contact-hero {
+            background: linear-gradient(135deg, #1e5da6, #3498db);
+            color: white;
+            padding: 120px 0 80px;
+            margin-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col-lg-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 0 15px;
+        }
+
+        .col-lg-4 {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+            padding: 0 15px;
+        }
+
+        .col-lg-8 {
+            flex: 0 0 66.666667%;
+            max-width: 66.666667%;
+            padding: 0 15px;
+        }
+
+        .col-md-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 0 15px;
+        }
+
+        .col-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0 15px;
+        }
+
+        .display-4 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        /* Contact Information Cards */
+        .contact-info {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .contact-info-card {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-info-card i {
+            font-size: 3rem;
+            color: #1e5da6;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .contact-info-card p {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info-card a {
+            color: #1e5da6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-card a:hover {
+            color: #1e3a8a;
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .form-container {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+
+        .form-container h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .form-container .subtitle {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #1e5da6;
+            box-shadow: 0 0 0 3px rgba(30, 93, 166, 0.1);
+        }
+
+        .form-control.textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1e5da6, #3498db);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 93, 166, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert i {
+            margin-right: 10px;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 400px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .col-lg-6, .col-lg-4, .col-lg-8 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .display-4 {
+                font-size: 2.5rem;
+            }
+
+            .form-container {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            .display-4 {
+                font-size: 2rem;
+            }
+
+            .contact-hero {
+                padding: 100px 0 60px;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .contact-info, .contact-form-section, .map-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nq7iRrhDA6xh6MANr4xkYSvOyvqcVS.png" alt="NUPO Consult Ltd Logo">
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#team">Our Team</a></li>
+                    <li><a href="index.html#partners">Partners</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="#contact-form" class="header-cta">Get in Touch</a>
+            
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4">Get in Touch</h1>
+                    <p class="lead">Ready to start your engineering project? Contact our expert team for professional consultation and services.</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <i class="fas fa-phone-alt" style="font-size: 5rem; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="contact-info-card">
+                        <div class="text-center">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Our Location</h4>
+                            <p>KG 11 Ave, Kigali – Rwanda</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="contact-info-card">
+                        <div class="text-center">
+                            <i class="fas fa-phone"></i>
+                            <h4>Phone Numbers</h4>
+                            <p><a href="tel:+250782246091">(+250) 782 246 091</a></p>
+                            <p><a href="tel:+250788303061">(+250) 788 303 061</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="contact-info-card">
+                        <div class="text-center">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email Address</h4>
+                            <p>
+                                <a href="mailto:info@nupoconsult.com">info@nupoconsult.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container">
+                        <h2 class="text-center">Send Us a Message</h2>
+                        <p class="text-center subtitle">
+                            Have a question or need a consultation? Fill out the form below and we'll get back to you as soon as possible.
+                        </p>
+                        
+                        <div id="alert-container"></div>
+                        
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="company" class="form-label">Company/Organization</label>
+                                        <input type="text" class="form-control" id="company" name="company">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service" class="form-label">Service of Interest</label>
+                                <select class="form-control" id="service" name="service">
+                                    <option value="">Select a service...</option>
+                                    <option value="consultation">Engineering Consultation & Investigation</option>
+                                    <option value="feasibility">Feasibility Studies</option>
+                                    <option value="design">Design & Design Management</option>
+                                    <option value="permits">Construction Permits</option>
+                                    <option value="cost-analysis">Cost Analysis & Estimation</option>
+                                    <option value="supervision">Project Supervision</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control textarea" id="message" name="message" rows="5" required placeholder="Tell us about your project or inquiry..."></textarea>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center" style="margin-bottom: 40px; color: #2c3e50;">Find Us</h2>
+                    <div class="map-container">
+                        <div class="text-center">
+                            <i class="fas fa-map-marked-alt" style="font-size: 4rem; color: #1e5da6; margin-bottom: 20px;"></i>
+                            <h4 style="color: #2c3e50;">KG 11 Ave, Kigali – Rwanda</h4>
+                            <p>Interactive map integration available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 NUPO Consult Ltd. All rights reserved. | Professional Engineering Services in Rwanda</p>
+        </div>
+    </footer>
+
+    <script>
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.name || !data.email || !data.message) {
+                showAlert('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                showAlert('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.btn-primary');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                showAlert('Thank you for your message! We will get back to you within 24 hours.', 'success');
+                this.reset();
+                
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+        
+        // Show alert function
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alert-container');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
+            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle';
+            
+            const alertHTML = `
+                <div class="alert ${alertClass}">
+                    <i class="fas ${icon}"></i>
+                    ${message}
+                </div>
+            `;
+            
+            alertContainer.innerHTML = alertHTML;
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                alertContainer.innerHTML = '';
+            }, 5000);
+            
+            // Scroll to alert
+            alertContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = '#fff';
+                header.style.backdropFilter = 'none';
+            }
+        });
+        
+        // Mobile menu functionality
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

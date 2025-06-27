@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUPO Consult Ltd - Construction Engineering Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1e40af;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #1e40af;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1e40af;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .header-cta {
+            background: #1e40af;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .header-cta:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #374151;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            opacity: 0;
+            animation: slideInUp 0.8s ease 0.3s forwards;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 35px;
+            opacity: 0;
+            animation: slideInUp 0.8s ease 0.5s forwards;
+        }
+
+        .hero-title .highlight {
+            color: #60a5fa;
+        }
+
+        .hero-description {
+            font-size: 24px;
+            line-height: 1.6;
+            margin-bottom: 45px;
+            opacity: 0;
+            animation: slideInUp 0.8s ease 0.7s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 25px;
+            opacity: 0;
+            animation: slideInUp 0.8s ease 0.9s forwards;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #1e40af;
+            padding: 18px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 36px;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1e40af;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            opacity: 0;
+            animation: slideInRight 1s ease 1.1s forwards;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .construction-icons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 80%;
+            height: 80%;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .construction-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .construction-icon:nth-child(1) { animation-delay: 0s; }
+        .construction-icon:nth-child(2) { animation-delay: 0.5s; }
+        .construction-icon:nth-child(3) { animation-delay: 1s; }
+        .construction-icon:nth-child(4) { animation-delay: 1.5s; }
+        .construction-icon:nth-child(5) { animation-delay: 2s; }
+        .construction-icon:nth-child(6) { animation-delay: 2.5s; }
+
+        /* Stats Section */
+        .stats {
+            background: #f8fafc;
+            padding: 100px 0;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 50px 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            font-size: 20px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 140px 0;
+            background: white;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 25px;
+        }
+
+        .section-subtitle {
+            font-size: 22px;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            margin-bottom: 35px;
+        }
+
+        .service-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .service-description {
+            font-size: 18px;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .service-link {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 15px;
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 140px 0;
+            background: #f8fafc;
+        }
+
+        .partners-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .partner-logo {
+            width: 180px;
+            height: 120px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .partner-logo.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .partner-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #374151;
+            text-align: center;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 140px 0;
+            background: white;
+        }
+
+        .team-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .team-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 80px;
+        }
+
+        .team-info {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .team-position {
+            font-size: 18px;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .team-description {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-link:hover {
+            background: #1e40af;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 140px 0;
+            background: #f8fafc;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 56px;
+            font-weight: 900;
+            color: #1f2937;
+            margin-bottom: 35px;
+        }
+
+        .about-content p {
+            font-size: 20px;
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 140px 0;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .cta h2 {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 35px;
+        }
+
+        .cta p {
+            font-size: 22px;
+            margin-bottom: 45px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 56px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .logo img {
+                height: 45px;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-description {
+                font-size: 20px;
+            }
+
+            .section-subtitle {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nq7iRrhDA6xh6MANr4xkYSvOyvqcVS.png" alt="NUPO Consult Ltd Logo">
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="team/">Our Team</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="contact/">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="contact/" class="header-cta">Get in Touch</a>
+            
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">Rwanda's Engineering Partner</div>
+                <h1 class="hero-title">
+                    INNOVATING <span class="highlight">PROJECTS</span>, 
+                    <span class="highlight">DESIGN</span>, AND 
+                    <span class="highlight">LEGAL EXPERTISE</span>
+                </h1>
+                <p class="hero-description">
+                    With around 10 years of experience, we provide professional engineering services 
+                    as the fastest growing company in the construction industry.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn-primary">
+                        Explore More <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn-secondary">Get Quote</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <div class="construction-icons">
+                        <div class="construction-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <div class="construction-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div class="construction-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="construction-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="construction-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="construction-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">150</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">50</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">24</div>
+                <div class="stat-label">Support Available</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Engineering Services</h2>
+                <p class="section-subtitle">
+                    Comprehensive construction engineering solutions tailored to meet your project requirements with professional excellence and innovative approaches.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="service-title">Engineering Consultation & Investigation</h3>
+                    <p class="service-description">
+                        Professional engineering consultation services with thorough site investigation 
+                        and technical analysis for optimal project outcomes and risk mitigation.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="service-title">Feasibility Studies</h3>
+                    <p class="service-description">
+                        Comprehensive feasibility studies to evaluate project viability, 
+                        technical requirements, and potential returns on investment with detailed analysis.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="service-title">Design & Design Management</h3>
+                    <p class="service-description">
+                        Innovative engineering designs with comprehensive design management 
+                        throughout the entire project development lifecycle and quality assurance.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="service-title">Construction Permits</h3>
+                    <p class="service-description">
+                        Streamlined construction permit procedures ensuring full compliance 
+                        with all regulatory requirements and building standards for smooth project execution.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="service-title">Cost Analysis & Estimation</h3>
+                    <p class="service-description">
+                        Detailed cost analysis and accurate project estimation services for 
+                        informed decision-making and effective budget planning with transparent reporting.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="service-title">Project Supervision</h3>
+                    <p class="service-description">
+                        Professional construction supervision and quality inspection services 
+                        ensuring adherence to specifications and industry standards throughout construction.
+                    </p>
+                    <a href="#contact" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners" id="partners">
+        <div class="partners-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Trusted Partners</h2>
+                <p class="section-subtitle">
+                    We collaborate with leading organizations and institutions to deliver exceptional engineering solutions and maintain the highest standards of excellence.
+                </p>
+            </div>
+            
+            <div class="partners-grid" id="partnersGrid">
+                <!-- Partners will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="team-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Expert Team</h2>
+                <p class="section-subtitle">
+                    Meet our highly qualified and experienced professionals who bring decades of combined expertise in construction engineering and project management.
+                </p>
+            </div>
+            
+            <div class="team-grid" id="teamGrid">
+                <!-- Team members will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content fade-in">
+                <h2>Leading Construction Engineering Firm in Rwanda</h2>
+                <p>
+                    NUPO Consult Ltd is a premier engineering consulting firm registered and domiciled in Rwanda, 
+                    specializing in comprehensive construction engineering services including project management, 
+                    construction management, design management, and regulatory compliance.
+                </p>
+                <p>
+                    Our strategic leadership team consists of highly qualified and experienced professionals 
+                    with deep understanding of all aspects of construction engineering. We are committed to 
+                    delivering quality, reliable, and trusted engineering services to shape the future of 
+                    Rwanda's construction industry.
+                </p>
+                <a href="#contact" class="btn-primary">
+                    Learn More About Us <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="about-image fade-in">
+                <img src="/placeholder.svg?height=500&width=600&text=Construction+Engineering+Team" alt="Construction Engineering Team">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="cta-container">
+            <h2>Ready to Start Your Construction Project?</h2>
+            <p>
+                Get in touch with our expert engineering team for professional consultation 
+                and take your construction project to the next level with our comprehensive services.
+            </p>
+            <a href="mailto:info@nupoconsult.com" class="btn-primary" style="background: white; color: #1e40af;">
+                Get Started Today <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Dynamic Partners Data
+        const partnersData = [
+            { name: "Rwanda Development Board", logo: "RDB" },
+            { name: "Ministry of Infrastructure", logo: "MININFRA" },
+            { name: "City of Kigali", logo: "COK" },
+            { name: "Rwanda Housing Authority", logo: "RHA" },
+            { name: "Private Sector Federation", logo: "PSF" },
+            { name: "Rwanda Standards Board", logo: "RSB" },
+            { name: "University of Rwanda", logo: "UR" },
+            { name: "EUCL", logo: "EUCL" },
+            { name: "WASAC", logo: "WASAC" },
+            { name: "Rwanda Green Fund", logo: "FONERWA" }
+        ];
+
+        // Dynamic Team Data
+        const teamData = [
+            {
+                name: "Dr. Ntawirutshintege Olivier",
+                position: "Senior Engineering Consultant & CEO",
+                description: "Leading expert in construction engineering with over 15 years of experience in project management and structural design. PhD in Civil Engineering with specialization in sustainable construction practices.",
+                social: {
+                    linkedin: "#",
+                    email: "olivier@nupoconsult.com"
+                }
+            },
+            {
+                name: "Eng. Jean D'Amour MUNYESHYAKA",
+                position: "Project Manager & Technical Director",
+                description: "Experienced project manager specializing in large-scale construction projects and infrastructure development. Expert in construction supervision and quality assurance with proven track record.",
+                social: {
+                    linkedin: "#",
+                    email: "jean@nupoconsult.com"
+                }
+            },
+            {
+                name: "Eng. Marie Claire UWIMANA",
+                position: "Design Manager & Structural Engineer",
+                description: "Innovative structural engineer with expertise in modern design methodologies and sustainable building practices. Specializes in complex structural analysis and design optimization.",
+                social: {
+                    linkedin: "#",
+                    email: "marie@nupoconsult.com"
+                }
+            },
+            {
+                name: "Eng. Patrick NZEYIMANA",
+                position: "Construction Supervisor & Quality Control",
+                description: "Dedicated construction supervisor with extensive experience in quality control and site management. Expert in ensuring compliance with building codes and safety regulations.",
+                social: {
+                    linkedin: "#",
+                    email: "patrick@nupoconsult.com"
+                }
+            },
+            {
+                name: "Eng. Sarah MUKAMANA",
+                position: "Environmental Engineer & Sustainability Consultant",
+                description: "Environmental engineering specialist focused on sustainable construction practices and environmental impact assessment. Expert in green building technologies and LEED certification.",
+                social: {
+                    linkedin: "#",
+                    email: "sarah@nupoconsult.com"
+                }
+            },
+            {
+                name: "Eng. David HABIMANA",
+                position: "Cost Estimation & Financial Analysis Specialist",
+                description: "Financial analysis expert specializing in construction cost estimation and project feasibility studies. Proven expertise in budget optimization and financial risk assessment.",
+                social: {
+                    linkedin: "#",
+                    email: "david@nupoconsult.com"
+                }
+            }
+        ];
+
+        // Load Partners Dynamically
+        function loadPartners() {
+            const partnersGrid = document.getElementById('partnersGrid');
+            if (!partnersGrid) return;
+            
+            partnersData.forEach((partner, index) => {
+                const partnerElement = document.createElement('div');
+                partnerElement.className = 'partner-logo';
+                partnerElement.innerHTML = `
+                    <div class="partner-name">${partner.logo}</div>
+                `;
+                partnerElement.style.transitionDelay = `${index * 0.1}s`;
+                partnersGrid.appendChild(partnerElement);
+            });
+        }
+
+        // Load Team Dynamically
+        function loadTeam() {
+            const teamGrid = document.getElementById('teamGrid');
+            if (!teamGrid) return;
+            
+            teamData.forEach((member, index) => {
+                const teamElement = document.createElement('div');
+                teamElement.className = 'team-card';
+                teamElement.innerHTML = `
+                    <div class="team-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">${member.name}</h3>
+                        <p class="team-position">${member.position}</p>
+                        <p class="team-description">${member.description}</p>
+                        <div class="team-social">
+                            <a href="${member.social.linkedin}" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="mailto:${member.social.email}" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                teamElement.style.transitionDelay = `${index * 0.1}s`;
+                teamGrid.appendChild(teamElement);
+            });
+        }
+
+        // Initialize scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements including dynamically loaded ones
+            document.querySelectorAll('.fade-in, .partner-logo, .team-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize dynamic content and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load dynamic content first
+            loadPartners();
+            loadTeam();
+            
+            // Initialize animations after content is loaded
+            setTimeout(() => {
+                initScrollAnimations();
+            }, 100);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = '#fff';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + (target >= 100 ? '+' : target === 24 ? '/7' : '+');
+            }, 20);
+        }
+
+        // Animate counters when they come into view
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.textContent);
+                    animateCounter(entry.target, target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        statNumbers.forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        // Mobile menu functionality
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
