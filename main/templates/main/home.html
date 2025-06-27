@@ -644,6 +644,222 @@
             line-height: 1.6;
         }
 
+        /* Footer Styles */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 80px 0 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-about {
+            padding-right: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-description {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #d1d5db;
+            margin-bottom: 30px;
+        }
+
+        .footer-contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #d1d5db;
+        }
+
+        .contact-item i {
+            width: 20px;
+            color: #3b82f6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-link {
+            width: 45px;
+            height: 45px;
+            background: #374151;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .footer-social-link:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: #3b82f6;
+            padding-left: 5px;
+        }
+
+        .footer-newsletter {
+            margin-bottom: 25px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            background: #374151;
+            color: white;
+            font-size: 16px;
+        }
+
+        .newsletter-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .newsletter-btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: #1e40af;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-copyright {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-legal a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: #3b82f6;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+        }
+
         /* Animations */
         @keyframes slideInUp {
             from {
@@ -719,6 +935,11 @@
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -770,6 +991,24 @@
             .section-subtitle {
                 font-size: 18px;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-about {
+                padding-right: 0;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -778,7 +1017,7 @@
     <header class="header">
         <div class="header-container">
             <a href="#" class="logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nq7iRrhDA6xh6MANr4xkYSvOyvqcVS.png" alt="NUPO Consult Ltd Logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FJIfHkRUWmLTbs9vhIT4tNiW01LRbY.png" alt="NUPO Consult Ltd Logo">
             </a>
             
             <nav>
@@ -1041,6 +1280,139 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FJIfHkRUWmLTbs9vhIT4tNiW01LRbY.png" alt="NUPO Consult Ltd">
+                    </a>
+                    <p class="footer-description">
+                        NUPO Consult Ltd is Rwanda's leading construction engineering firm, providing comprehensive 
+                        engineering solutions with over 10 years of experience in project management, design, 
+                        and construction supervision.
+                    </p>
+                    
+                    <div class="footer-contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kigali, Rwanda</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+250 788 123 456</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@nupoconsult.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Fri: 8:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#team"><i class="fas fa-chevron-right"></i> Our Team</a></li>
+                        <li><a href="#partners"><i class="fas fa-chevron-right"></i> Partners</a></li>
+                        <li><a href="contact/"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Engineering Consultation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Feasibility Studies</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Design Management</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Construction Permits</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cost Analysis</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Project Supervision</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Quality Control</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Site Investigation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3>Stay Updated</h3>
+                    <div class="footer-newsletter">
+                        <p style="color: #d1d5db; font-size: 16px; margin-bottom: 20px;">
+                            Subscribe to our newsletter for the latest updates on construction engineering trends and company news.
+                        </p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <input 
+                                type="email" 
+                                class="newsletter-input" 
+                                placeholder="Enter your email"
+                                required
+                            >
+                            <button type="submit" class="newsletter-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <h4 style="color: white; font-size: 16px; margin-bottom: 15px;">Certifications</h4>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <span style="color: #d1d5db; font-size: 14px;"><i class="fas fa-certificate" style="color: #3b82f6; margin-right: 8px;"></i> ISO 9001:2015 Certified</span>
+                            <span style="color: #d1d5db; font-size: 14px;"><i class="fas fa-certificate" style="color: #3b82f6; margin-right: 8px;"></i> Rwanda Engineers Board</span>
+                            <span style="color: #d1d5db; font-size: 14px;"><i class="fas fa-certificate" style="color: #3b82f6; margin-right: 8px;"></i> LEED Accredited</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 NUPO Consult Ltd. All rights reserved. | Designed with excellence for Rwanda's construction industry.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script>
         // Dynamic Partners Data
         const partnersData = [
@@ -1182,11 +1554,65 @@
             });
         }
 
+        // Newsletter form submission
+        function handleNewsletterSubmission() {
+            const form = document.getElementById('newsletterForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('.newsletter-input').value;
+                    
+                    // Simulate form submission
+                    const button = this.querySelector('.newsletter-btn');
+                    const originalContent = button.innerHTML;
+                    
+                    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                    button.disabled = true;
+                    
+                    setTimeout(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i>';
+                        this.querySelector('.newsletter-input').value = '';
+                        
+                        setTimeout(() => {
+                            button.innerHTML = originalContent;
+                            button.disabled = false;
+                        }, 2000);
+                    }, 1000);
+                });
+            }
+        }
+
+        // Back to top functionality
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            if (backToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        }
+
         // Initialize dynamic content and animations
         document.addEventListener('DOMContentLoaded', function() {
             // Load dynamic content first
             loadPartners();
             loadTeam();
+            
+            // Initialize functionality
+            handleNewsletterSubmission();
+            initBackToTop();
             
             // Initialize animations after content is loaded
             setTimeout(() => {
