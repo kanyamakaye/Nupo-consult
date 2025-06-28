@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Projects Supervision and Inspection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-left-color: #e74c3c;
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-card h3::before {
+            content: "⚡";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .service-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .image-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-card .content {
+            padding: 20px;
+        }
+
+        .image-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .image-card p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer p {
+            color: #7f8c8d;
+            line-height: 1.7;
+        }
+
+        .special-services {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left: 5px solid #f39c12;
+        }
+
+        .special-services h3::before {
+            content: "🏗️";
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 20px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .animated {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header animated">
+            <h1>Construction Projects Supervision and Inspection</h1>
+            <p>Under this section of our services delivery, we offer different services such as comprehensive quality assurance and performance monitoring</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card animated">
+                <h3>Quality Assurance</h3>
+                <p>We verify that the quality of construction work performed meets the quality and performance requirements specified in the construction contract documents and the pre-defined drawings.</p>
+                <p>Contained with the construction and subcontractors, this includes design work and materials checking and anything else relevant to an efficiently constructed factory.</p>
+            </div>
+
+            <div class="service-card animated">
+                <h3>Code Compliance</h3>
+                <p>We verify the regulatory and advanced standards compliance. We document and report specifications, drawings, construction materials, equipment, and procedures against established internal and fire requirements.</p>
+            </div>
+
+            <div class="service-card animated">
+                <h3>Structural, Electrical, Mechanical and Access Compliance</h3>
+                <p>We verify that structural, electrical, mechanical and access procedures for installation of equipment are provided and managed by construction contractors from safety codes and standards.</p>
+            </div>
+
+            <div class="service-card animated">
+                <h3>Equipment Testing Observation</h3>
+                <p>We verify that all contract requirements for testing and verification of equipment have been performed and recorded.</p>
+            </div>
+
+            <div class="service-card animated">
+                <h3>Material Testing Coordination</h3>
+                <p>We monitor material testing performed in the testing and verification of all materials as designed by the construction contractor. Documents for material testing procedures and compliance with applicable director or designer for acceptance and final approval of the construction contract simulated units and material quality control approval requirements testing schedules.</p>
+            </div>
+
+            <div class="service-card animated">
+                <h3>Equipment Testing Observation</h3>
+                <p>We verify that the contract documents and the project's general requirements concerning mechanical systems and equipment are adequately tested and verified.</p>
+            </div>
+
+            <div class="service-card animated">
+                <h3>Assemble & Coordinate Closeout Documents to provide project completion reports</h3>
+                <p>Include preparation and distribution of project operations and maintenance manuals, OSHA certification of record drawings, warranty publications, parts lists, equipment specifications, and other closeout related items.</p>
+            </div>
+
+            <div class="service-card special-services animated">
+                <h3>Storm Water Pollution Prevention, Air Quality and Environmental</h3>
+                <p>Monitoring and inspection of environmental control enforcement procedures for storm water run-off quality in compliance with environmental impact measures.</p>
+            </div>
+
+            <div class="service-card animated">
+                <h3>Preparing Monthly Report</h3>
+                <p>Summary of the projects progress including materials and graphic construction scheduled items and project status of completion; a description of contractor's services work being of potential technology aspects and/or deficiency.</p>
+            </div>
+
+            <div class="service-card animated">
+                <h3>Contract Completion Certification</h3>
+                <p>Facilitating final contractual certification in compliance with the approved construction contract documents and recommendations to the director in charges of acceptance and final payment of the construction contract.</p>
+            </div>
+        </div>
+
+        <div class="image-gallery">
+            <div class="image-card animated">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Construction Site">
+                <div class="content">
+                    <h4>Construction Site Supervision</h4>
+                    <p>Professional oversight of construction projects ensuring quality standards and compliance with specifications.</p>
+                </div>
+            </div>
+            
+            <div class="image-card animated">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Engineering Plans">
+                <div class="content">
+                    <h4>Technical Documentation</h4>
+                    <p>Comprehensive review and verification of engineering plans, specifications, and technical documentation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer animated">
+            <h3>Professional Construction Supervision Services</h3>
+            <p>Our experienced team provides comprehensive supervision and inspection services to ensure your construction project meets the highest standards of quality, safety, and compliance. Contact us today to discuss your project requirements.</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling animation on load
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.service-card, .image-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = 'all 0.6s ease';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+
+        // Add hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

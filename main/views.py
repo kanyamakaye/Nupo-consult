@@ -104,3 +104,21 @@ from .models import Partner
 def partners_view(request):
     partners = Partner.objects.all()
     return render(request, 'team/partners.html', {'partners': partners})
+
+
+def feasibility_view(request):
+    return render(request, 'main/feasibility.html')
+
+def design_more(request):
+    return render(request, 'main/designs.html')
+
+def analysis_more(request):
+    return render(request, 'main/Analysis.html')
+def engineering_more(request):
+    return render(request, 'main/Engineering.html')
+def permitting_more(request):
+    return render(request, 'main/Permit.html')
+def construction_more(request):
+    return render(request, 'main/Construction.html')
+def engineering_more(request):
+    return render(request, 'main/Engineering.html')

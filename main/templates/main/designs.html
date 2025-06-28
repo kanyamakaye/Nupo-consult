@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Designs and Design Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: left;
+            font-weight: 700;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 2px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .services-content p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 25px;
+            transform: translateY(50%);
+            transition: transform 0.4s ease;
+        }
+
+        .image-container:hover .image-overlay {
+            transform: translateY(0);
+        }
+
+        .image-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .process-stages {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stage {
+            flex: 1;
+            min-width: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stage:hover {
+            transform: translateY(-5px);
+        }
+
+        .highlight-text {
+            background: linear-gradient(120deg, #a8e6cf 0%, #88d8a3 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .image-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .process-stages {
+                flex-direction: column;
+            }
+            
+            .stage {
+                min-width: auto;
+            }
+        }
+
+        .cta-section {
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Engineering designs and Design Management</h1>
+        
+        <div class="description">
+            We manage the Design process for the Owner. We avail the appropriate and experienced Architects and specialty Engineers (Structural, Electrical, Mechanical, Other), managing and coordinating their activities and deliverables while ensuring design coordination, construction compatibility and efficiency through the various stages of the design process (Concept, Preliminary, Final through Tender Documents). We determine the physical characteristics and dimensions of a structure or project to be constructed or manufactured.
+        </div>
+
+        <div class="process-stages">
+            <div class="stage">Concept</div>
+            <div class="stage">Preliminary</div>
+            <div class="stage">Final</div>
+            <div class="stage">Tender Documents</div>
+        </div>
+        
+        <div class="services-content">
+            <p>
+                These characteristics and dimensions are presented graphically on drawings, commonly referred as <span class="highlight-text">blueprints</span>. We supplement the technical drawings with document called <span class="highlight-text">technical specifications</span> that are used to direct the contractor on the details of work expected from him/her. We also help our clients in the preparation of detailed lists of <span class="highlight-text">materials/bill of quantities</span> which is used to procure all the materials needed for the construction work.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏗️</div>
+                <h4>Structural Design</h4>
+                <p>Complete structural analysis and design services</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h4>Electrical Systems</h4>
+                <p>Power distribution and electrical infrastructure</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h4>Mechanical Design</h4>
+                <p>HVAC, plumbing, and mechanical systems</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h4>Project Coordination</h4>
+                <p>Seamless integration of all design disciplines</p>
+            </div>
+        </div>
+        
+        <div class="image-gallery">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Architecture Design">
+                <div class="image-overlay">
+                    <h3>Architectural Visualization</h3>
+                    <p>3D modeling and architectural rendering services</p>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Technical Blueprints">
+                <div class="image-overlay">
+                    <h3>Technical Documentation</h3>
+                    <p>Detailed blueprints and technical specifications</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h3>Ready to Start Your Design Project?</h3>
+            <p>Let our experienced team bring your vision to life with professional engineering design services</p>
+            <a href="#contact" class="cta-button">Start Your Project</a>
+        </div>
+    </div>
+</body>
+</html>
