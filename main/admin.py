@@ -9,3 +9,4 @@ admin.site.register(TeamMember)
 admin.site.register(Newsletter)
 admin.site.register(ContactMessage)
 admin.site.register(Partner)
+
