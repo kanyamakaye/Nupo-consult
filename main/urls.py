@@ -1,22 +1,37 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from django.contrib import admin
+from . import views, dashboard_views
 
 app_name = 'main'
 
 urlpatterns = [
+    # Homepage
     path('', views.home, name='home'),
-    path('about/', views.about, name='about'),
+    
+    # Services
     path('services/', views.services, name='services'),
+    path('services/<slug:slug>/', views.service_detail, name='service_detail'),
+    
+    # Team
+    path('team/', views.team, name='team'),
+    
+    # Projects
+    path('projects/', views.projects, name='projects'),
+    path('projects/<slug:slug>/', views.project_detail, name='project_detail'),
+    
+    # News
     path('news/', views.news, name='news'),
+    path('news/<slug:slug>/', views.news_detail, name='news_detail'),
+    
+    # About
+    path('about/', views.about, name='about'),
+    
+    # Contact
     path('contact/', views.contact, name='contact'),
+    
+    # AJAX endpoints
     path('newsletter/subscribe/', views.newsletter_subscribe, name='newsletter_subscribe'),
-    path('team/', views.team_list, name='team_list'),
-    path('partners/', views.partners_view, name='partners'),
-    path('feasibility/', views.feasibility_view, name='feasibility'),
-    path('designs/', views.design_more, name='designs'),
-    path('analysis/', views.analysis_more, name='analysis'),
-    path('engineering/', views.engineering_more, name='engineering'),
-    path('permitting/contact/', views.permitting_more, name='permitting'),
-    path('construction/', views.construction_more, name='construction'),
-    path('engineering/', views.engineering_more, name='engineering_more'),
+    
+    # Admin dashboard
+    path('admin/dashboard-stats/', dashboard_views.dashboard_stats, name='dashboard_stats'),
 ]

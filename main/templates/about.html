@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - {{ company.name|default:"NUPO Consult Ltd" }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="hero-section">
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h1 class="display-4 fw-bold mb-4">About {{ company.name|default:"NUPO Consult Ltd" }}</h1>
+                <p class="lead mb-4">{{ company.tagline|default:"Rwanda's Engineering Partner" }}</p>
+                <p class="mb-4">
+                    {{ company.description|default:"We are a leading engineering consultancy firm in Rwanda, dedicated to providing innovative, sustainable, and cost-effective engineering solutions. Our team of experienced professionals is committed to excellence in every project we undertake." }}
+                </p>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="text-center">
+                    {% if company.logo %}
+                    <img src="{{ company.logo.url }}" alt="{{ company.name }}" class="img-fluid mb-4" style="max-height: 200px;">
+                    {% endif %}
+                    <img src="/placeholder.svg?height=300&width=400" alt="About Us" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Company Stats -->
+{% if stats %}
+<section class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-item">
+                    <span class="stat-number">{{ stats.years_experience }}+</span>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-item">
+                    <span class="stat-number">{{ stats.projects_completed }}+</span>
+                    <div class="stat-label">Successful Projects</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-item">
+                    <span class="stat-number">{{ stats.happy_clients }}+</span>
+                    <div class="stat-label">Satisfied Clients</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-item">
+                    <span class="stat-number">{{ stats.support_hours }}</span>
+                    <div class="stat-label">Hour Support</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Mission & Vision -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5" data-aos="fade-right">
+                <div class="card h-100 border-0 shadow-lg">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-bullseye fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="card-title">Our Mission</h3>
+                        <p class="card-text">
+                            To provide innovative, sustainable, and cost-effective engineering solutions that contribute to Rwanda's development while maintaining the highest standards of quality and professionalism.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-5" data-aos="fade-left">
+                <div class="card h-100 border-0 shadow-lg">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-4">
+                            <i class="fas fa-eye fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="card-title">Our Vision</h3>
+                        <p class="card-text">
+                            To be the leading engineering consultancy firm in Rwanda, recognized for our technical excellence, innovative solutions, and commitment to sustainable development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Our Core Values</h2>
+                <p class="section-subtitle">
+                    The principles that guide everything we do
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card text-center h-100 border-0 shadow">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-award fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Excellence</h5>
+                        <p class="card-text">We strive for excellence in every project, delivering quality that exceeds expectations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card text-center h-100 border-0 shadow">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-lightbulb fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Innovation</h5>
+                        <p class="card-text">We embrace new technologies and creative solutions to solve complex engineering challenges.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card text-center h-100 border-0 shadow">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-handshake fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Integrity</h5>
+                        <p class="card-text">We conduct business with honesty, transparency, and ethical practices in all our dealings.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="card text-center h-100 border-0 shadow">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-leaf fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Sustainability</h5>
+                        <p class="card-text">We prioritize environmentally responsible solutions that benefit future generations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="card text-center h-100 border-0 shadow">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-users fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Collaboration</h5>
+                        <p class="card-text">We work closely with clients and partners to achieve shared goals and mutual success.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="card text-center h-100 border-0 shadow">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-clock fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Reliability</h5>
+                        <p class="card-text">We deliver projects on time and within budget, maintaining consistent quality standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+{% if team_members %}
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Meet Our Expert Team</h2>
+                <p class="section-subtitle">
+                    Our experienced professionals bring diverse expertise and dedication to every project
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for member in team_members %}
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:100 }}">
+                <div class="card text-center h-100 border-0 shadow">
+                    {% if member.profile_image %}
+                    <img src="{{ member.profile_image.url }}" class="card-img-top rounded-circle mx-auto mt-4" alt="{{ member.name }}" style="width: 150px; height: 150px; object-fit: cover;">
+                    {% else %}
+                    <img src="/placeholder.svg?height=150&width=150" class="card-img-top rounded-circle mx-auto mt-4" alt="{{ member.name }}" style="width: 150px; height: 150px;">
+                    {% endif %}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ member.name }}</h5>
+                        <p class="text-primary fw-semibold">{{ member.position }}</p>
+                        <p class="card-text small">{{ member.short_bio }}</p>
+                        
+                        {% if member.experience_years %}
+                        <div class="mb-2">
+                            <small class="text-muted">
+                                <i class="fas fa-calendar-alt me-1"></i>{{ member.experience_years }} years experience
+                            </small>
+                        </div>
+                        {% endif %}
+                        
+                        {% if member.specializations %}
+                        <div class="mb-3">
+                            {% for spec in member.specializations|slice:":2" %}
+                            <span class="badge bg-light text-dark me-1 mb-1">{{ spec }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                        <div class="d-flex justify-content-center gap-2">
+                            {% if member.email %}
+                            <a href="mailto:{{ member.email }}" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            {% endif %}
+                            {% if member.linkedin_url %}
+                            <a href="{{ member.linkedin_url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'main:team' %}" class="btn btn-primary btn-lg">
+                View Full Team <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Partners Section -->
+{% if partners %}
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Our Partners</h2>
+                <p class="section-subtitle">
+                    Collaborating with leading organizations to deliver exceptional results
+                </p>
+            </div>
+        </div>
+        
+        <div class="row align-items-center">
+            {% for partner in partners %}
+            <div class="col-lg-3 col-md-4 col-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:50 }}">
+                <div class="text-center p-3">
+                    {% if partner.logo %}
+                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="img-fluid partner-logo" style="max-height: 80px; filter: grayscale(100%); transition: filter 0.3s ease;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'">
+                    {% else %}
+                    <img src="/placeholder.svg?height=80&width=120" alt="{{ partner.name }}" class="img-fluid">
+                    {% endif %}
+                    <h6 class="mt-2 small">{{ partner.name }}</h6>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA Section -->
+<section class="section-padding bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+                <h2 class="section-title text-white">Ready to Work With Us?</h2>
+                <p class="section-subtitle text-white-50 mb-4">
+                    Let's discuss how our expertise can help bring your project to life
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'main:contact' %}" class="btn btn-light btn-lg">
+                        <i class="fas fa-phone me-2"></i>Get in Touch
+                    </a>
+                    <a href="{% url 'main:services' %}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-tools me-2"></i>Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

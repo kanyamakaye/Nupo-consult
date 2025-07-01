@@ -1,0 +1,351 @@
+{% extends "admin/base_site.html" %}
+{% load admin_urls static admin_modify %}
+
+{% block title %}Dashboard Statistics{% endblock %}
+
+{% block extrahead %}
+<style>
+    .dashboard-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+    }
+    
+    .stat-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .stat-card h3 {
+        margin: 0 0 15px 0;
+        color: #333;
+        border-bottom: 2px solid #417690;
+        padding-bottom: 10px;
+    }
+    
+    .stat-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+    
+    .stat-value {
+        font-weight: bold;
+        color: #417690;
+        font-size: 1.2em;
+    }
+    
+    .stat-value.urgent {
+        color: #dc3545;
+    }
+    
+    .stat-value.success {
+        color: #28a745;
+    }
+    
+    .recent-items {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin: 20px 0;
+        overflow: hidden;
+    }
+    
+    .recent-items h3 {
+        background: #417690;
+        color: white;
+        margin: 0;
+        padding: 15px 20px;
+    }
+    
+    .recent-item {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .recent-item:last-child {
+        border-bottom: none;
+    }
+    
+    .recent-item-info {
+        flex-grow: 1;
+    }
+    
+    .recent-item-title {
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .recent-item-meta {
+        color: #666;
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
+    
+    .recent-item-date {
+        color: #999;
+        font-size: 0.9em;
+    }
+    
+    .chart-container {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .chart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .chart-item:last-child {
+        border-bottom: none;
+    }
+    
+    .chart-bar {
+        background: #417690;
+        height: 20px;
+        border-radius: 10px;
+        margin-left: 15px;
+        min-width: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Dashboard Statistics</h1>
+
+<div class="dashboard-stats">
+    <!-- Services Stats -->
+    <div class="stat-card">
+        <h3><i class="fas fa-tools"></i> Services</h3>
+        <div class="stat-item">
+            <span>Total Services</span>
+            <span class="stat-value">{{ stats.services.total }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Active Services</span>
+            <span class="stat-value success">{{ stats.services.active }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Featured Services</span>
+            <span class="stat-value">{{ stats.services.featured }}</span>
+        </div>
+    </div>
+    
+    <!-- Projects Stats -->
+    <div class="stat-card">
+        <h3><i class="fas fa-building"></i> Projects</h3>
+        <div class="stat-item">
+            <span>Total Projects</span>
+            <span class="stat-value">{{ stats.projects.total }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Public Projects</span>
+            <span class="stat-value">{{ stats.projects.public }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Completed</span>
+            <span class="stat-value success">{{ stats.projects.completed }}</span>
+        </div>
+        <div class="stat-item">
+            <span>In Progress</span>
+            <span class="stat-value">{{ stats.projects.in_progress }}</span>
+        </div>
+    </div>
+    
+    <!-- Team Stats -->
+    <div class="stat-card">
+        <h3><i class="fas fa-users"></i> Team</h3>
+        <div class="stat-item">
+            <span>Total Members</span>
+            <span class="stat-value">{{ stats.team.total }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Active Members</span>
+            <span class="stat-value success">{{ stats.team.active }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Featured Members</span>
+            <span class="stat-value">{{ stats.team.featured }}</span>
+        </div>
+    </div>
+    
+    <!-- Content Stats -->
+    <div class="stat-card">
+        <h3><i class="fas fa-newspaper"></i> Content</h3>
+        <div class="stat-item">
+            <span>Published Articles</span>
+            <span class="stat-value">{{ stats.content.news_articles }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Approved Testimonials</span>
+            <span class="stat-value">{{ stats.content.testimonials }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Active Partners</span>
+            <span class="stat-value">{{ stats.content.partners }}</span>
+        </div>
+    </div>
+    
+    <!-- Inquiries Stats -->
+    <div class="stat-card">
+        <h3><i class="fas fa-envelope"></i> Inquiries</h3>
+        <div class="stat-item">
+            <span>Total Inquiries</span>
+            <span class="stat-value">{{ stats.inquiries.total }}</span>
+        </div>
+        <div class="stat-item">
+            <span>This Week</span>
+            <span class="stat-value">{{ stats.inquiries.this_week }}</span>
+        </div>
+        <div class="stat-item">
+            <span>This Month</span>
+            <span class="stat-value">{{ stats.inquiries.this_month }}</span>
+        </div>
+        <div class="stat-item">
+            <span>Unresponded</span>
+            <span class="stat-value urgent">{{ stats.inquiries.unresponded }}</span>
+        </div>
+        <div class="stat-item">
+            <span>High Priority</span>
+            <span class="stat-value urgent">{{ stats.inquiries.high_priority }}</span>
+        </div>
+    </div>
+    
+    <!-- Newsletter Stats -->
+    <div class="stat-card">
+        <h3><i class="fas fa-paper-plane"></i> Newsletter</h3>
+        <div class="stat-item">
+            <span>Total Subscribers</span>
+            <span class="stat-value success">{{ stats.newsletter.total_subscribers }}</span>
+        </div>
+        <div class="stat-item">
+            <span>New This Week</span>
+            <span class="stat-value">{{ stats.newsletter.new_this_week }}</span>
+        </div>
+        <div class="stat-item">
+            <span>New This Month</span>
+            <span class="stat-value">{{ stats.newsletter.new_this_month }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activities -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <!-- Recent Inquiries -->
+    <div class="recent-items">
+        <h3>Recent Inquiries</h3>
+        {% for inquiry in recent_inquiries %}
+        <div class="recent-item">
+            <div class="recent-item-info">
+                <div class="recent-item-title">{{ inquiry.name }} - {{ inquiry.subject }}</div>
+                <div class="recent-item-meta">
+                    {{ inquiry.get_inquiry_type_display }} | {{ inquiry.email }}
+                    {% if not inquiry.is_responded %}
+                    <span style="color: #dc3545; font-weight: bold;">• Unresponded</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="recent-item-date">{{ inquiry.created_at|date:"M d, Y" }}</div>
+        </div>
+        {% empty %}
+        <div class="recent-item">
+            <div class="recent-item-info">No recent inquiries</div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Recent Subscribers -->
+    <div class="recent-items">
+        <h3>Recent Newsletter Subscribers</h3>
+        {% for subscriber in recent_subscribers %}
+        <div class="recent-item">
+            <div class="recent-item-info">
+                <div class="recent-item-title">{{ subscriber.email }}</div>
+                <div class="recent-item-meta">
+                    {% if subscriber.name %}{{ subscriber.name }}{% else %}No name provided{% endif %}
+                </div>
+            </div>
+            <div class="recent-item-date">{{ subscriber.subscribed_date|date:"M d, Y" }}</div>
+        </div>
+        {% empty %}
+        <div class="recent-item">
+            <div class="recent-item-info">No recent subscribers</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Charts -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <!-- Inquiry Types -->
+    <div class="chart-container">
+        <h3>Inquiry Types</h3>
+        {% for item in inquiry_types %}
+        <div class="chart-item">
+            <span>{{ item.inquiry_type|capfirst }}</span>
+            <div style="display: flex; align-items: center; min-width: 100px;">
+                <span style="margin-right: 10px;">{{ item.count }}</span>
+                <div class="chart-bar" style="width: {{ item.count|floatformat:0 }}0px;"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Project Status -->
+    <div class="chart-container">
+        <h3>Project Status</h3>
+        {% for item in project_status %}
+        <div class="chart-item">
+            <span>{{ item.status|capfirst }}</span>
+            <div style="display: flex; align-items: center; min-width: 100px;">
+                <span style="margin-right: 10px;">{{ item.count }}</span>
+                <div class="chart-bar" style="width: {{ item.count|floatformat:0 }}0px;"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Recent Articles -->
+<div class="recent-items">
+    <h3>Recent Published Articles</h3>
+    {% for article in recent_articles %}
+    <div class="recent-item">
+        <div class="recent-item-info">
+            <div class="recent-item-title">{{ article.title }}</div>
+            <div class="recent-item-meta">
+                {{ article.get_article_type_display }} | {{ article.views_count }} views
+                {% if article.is_featured %}
+                <span style="color: #28a745; font-weight: bold;">• Featured</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="recent-item-date">{{ article.published_date|date:"M d, Y" }}</div>
+    </div>
+    {% empty %}
+    <div class="recent-item">
+        <div class="recent-item-info">No recent articles</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
